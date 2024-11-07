@@ -1,6 +1,6 @@
 export const ROUTE = {
   HOME: "/",
-  BOUGHT: "/bought",
+  WHATS_THIS: "/whats-this",
   HOW_TO_BUY: "/how-to-buy",
   CHECKOUT: "/checkout",
 };
