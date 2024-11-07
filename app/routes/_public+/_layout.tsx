@@ -1,15 +1,15 @@
 import { Link, Outlet } from "@remix-run/react";
-import { ShoppingCart } from "react-feather";
 
 import { Navlink } from "~/components/navlink";
 import { FooterLink } from "~/components/footer-link";
 import { MobileMenu } from "~/components/mobile-menu";
+import { ShoppingCart } from "~/components/shopping-cart";
 
 import { ROUTE } from "~/utils/enum";
 
 export default function PublicLayout() {
   return (
-    <div className="w-full max-w-[1440px] h-[100svh] mx-auto p-6 md:pb-12 flex flex-col gap-8">
+    <div className="w-full max-w-[1440px] md:h-[100svh] mx-auto p-6 md:pb-12 flex flex-col gap-8">
       <header className="md:py-4 flex justify-between items-center">
         <div className="flex items-center gap-20">
           <Link

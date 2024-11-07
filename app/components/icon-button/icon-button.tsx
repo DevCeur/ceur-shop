@@ -7,8 +7,11 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const IconButton = ({ icon: Icon, ...buttonProps }: IconButtonProps) => {
   return (
-    <button {...buttonProps}>
-      <Icon />
+    <button
+      className="w-12 h-12 flex justify-center items-center border border-neutral-200"
+      {...buttonProps}
+    >
+      <Icon width={16} />
     </button>
   );
 };
