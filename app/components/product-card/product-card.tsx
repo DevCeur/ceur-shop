@@ -30,7 +30,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="group aspect-square md:aspect-auto bg-neutral-100 p-6 md:p-10 transition-all duration-150">
+    <div className="w-full group aspect-square bg-neutral-100 p-6 md:p-8 transition-all duration-150">
       <div className="w-full h-full flex flex-col justify-between transition-all duration-150">
         <div
           className={clsx(

@@ -119,7 +119,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
 
   const products = state.products;
   const subtotal = state.products
-    .map((product) => product.price.value)
+    .map((product) => product.price)
     .reduce((acc, curr) => acc + curr, 0);
 
   const getProductQuantity = ({ product }: { product: Product }): number => {

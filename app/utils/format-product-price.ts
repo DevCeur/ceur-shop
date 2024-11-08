@@ -1,14 +1,14 @@
 interface FormatProductPriceOptions {
-  price: { value: number; currency: string };
+  price: number;
 }
 
 export const formatProductPrice = ({ price }: FormatProductPriceOptions) => {
   const priceFormatter = new Intl.NumberFormat("us-US", {
     style: "currency",
-    currency: price.currency,
+    currency: "USD",
   });
 
-  const formattedPrice = priceFormatter.format(price.value);
+  const formattedPrice = priceFormatter.format(price);
 
   return formattedPrice;
 };
