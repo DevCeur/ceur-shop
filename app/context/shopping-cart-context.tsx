@@ -98,6 +98,7 @@ const shoppingCartReducer = (
 interface ShoppingCartContext extends ShoppingCartState {
   products: CartProduct[];
   subtotal: number;
+  totalProducts: number;
   dispatch: Dispatch<ShoppingCartReducerAction>;
   getProductQuantity: ({ product }: { product: Product }) => number;
   shoppingCartContainsProduct: ({ product }: { product: Product }) => boolean;
@@ -119,7 +120,10 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
 
   const products = state.products;
   const subtotal = state.products
-    .map((product) => product.price)
+    .map((product) => product.price * product.quantity)
+    .reduce((acc, curr) => acc + curr, 0);
+  const totalProducts = state.products
+    .map((product) => product.quantity)
     .reduce((acc, curr) => acc + curr, 0);
 
   const getProductQuantity = ({ product }: { product: Product }): number => {
@@ -138,6 +142,7 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
     modal: state.modal,
     products,
     subtotal,
+    totalProducts,
     dispatch,
     shoppingCartContainsProduct,
     getProductQuantity,

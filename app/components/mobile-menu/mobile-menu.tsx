@@ -32,13 +32,13 @@ export const MobileMenu = () => {
               className="fixed inset-0 bg-black/30 h-[100svh]"
             />
 
-            <div className="fixed inset-0 flex w-screen  justify-start h-[100svh]">
+            <div className="fixed inset-0 flex w-screen justify-start h-[100svh]">
               <DialogPanel
                 as={motion.div}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="w-full bg-white flex flex-col"
+                className="w-full bg-primary-backgrund flex flex-col"
               >
                 <div className="w-full flex justify-between items-center p-8">
                   <DialogTitle className="text-lg font-semibold uppercase">
