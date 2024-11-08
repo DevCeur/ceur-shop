@@ -23,7 +23,8 @@ type ShoppingCartReducerAction =
       type: "ADD_PRODUCT";
       payload: { product: Product };
     }
-  | { type: "REMOVE_PRODUCT"; payload: { productId: string } };
+  | { type: "REMOVE_PRODUCT"; payload: { productId: string } }
+  | { type: "EMPTY_CART" };
 
 const shoppingCartReducer = (
   state: ShoppingCartState,
@@ -88,6 +89,9 @@ const shoppingCartReducer = (
       );
 
       return { ...newState, products: newProducts };
+    }
+    case "EMPTY_CART": {
+      return { ...newState, products: [], modal: { ...newState.modal, isOpen: false } };
     }
     default: {
       throw new Error(`Action not handled: ${action}`);

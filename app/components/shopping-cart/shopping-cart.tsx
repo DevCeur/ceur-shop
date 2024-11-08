@@ -1,12 +1,14 @@
+import clsx from "clsx";
+
 import { useState } from "react";
 import { Link } from "@remix-run/react";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
+  X,
+  Plus,
   ChevronDown,
   ChevronUp,
-  Plus,
   ShoppingCart as ShoppingCartIcon,
-  X,
 } from "react-feather";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 
@@ -18,8 +20,7 @@ import { formatProductPrice } from "~/utils/format-product-price";
 import { Button } from "../button";
 import { IconButton } from "../icon-button";
 import { SpecialText } from "../special-text";
-import { ShoppingCartProductCard } from "../shopping-cart-product-card";
-import clsx from "clsx";
+import { ShoppingCartProductsList } from "../shopping-cart-products-list";
 
 export const ShoppingCart = () => {
   const {
@@ -39,6 +40,10 @@ export const ShoppingCart = () => {
 
   const handleCloseModal = () => {
     dispatch({ type: "CLOSE_MODAL" });
+  };
+
+  const handleEmptyCart = () => {
+    dispatch({ type: "EMPTY_CART" });
   };
 
   return (
@@ -92,13 +97,7 @@ export const ShoppingCart = () => {
                   <IconButton icon={X} onClick={handleCloseModal} />
                 </div>
 
-                <div className="flex-1 relative overflow-hidden">
-                  <ul className="w-full h-full flex flex-col absolute top-0 overflow-y-auto">
-                    {products.map((product) => (
-                      <ShoppingCartProductCard key={product.id} product={product} />
-                    ))}
-                  </ul>
-                </div>
+                <ShoppingCartProductsList products={products} />
 
                 {!hasProducts && (
                   <div className="w-full flex justify-center items-center py-12">
@@ -118,7 +117,7 @@ export const ShoppingCart = () => {
                     <div className="flex flex-col gap-6">
                       <div className="flex justify-between items-center">
                         <p className="text-lg font-medium">
-                          <SpecialText>checkout_information</SpecialText>
+                          <SpecialText>Checkout Info</SpecialText>
                         </p>
 
                         <button
@@ -150,7 +149,7 @@ export const ShoppingCart = () => {
                       )}
 
                       <div className="flex justify-between gap-8 pt-3">
-                        <Button>Empty Cart</Button>
+                        <Button onClick={handleEmptyCart}>Empty</Button>
 
                         <Button width="full" variant="primary">
                           Checkout
