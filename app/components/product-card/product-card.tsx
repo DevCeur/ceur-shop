@@ -1,12 +1,13 @@
 import clsx from "clsx";
 
-import { ArrowUpRight } from "react-feather";
+import { Eye } from "react-feather";
 
 import type { Product } from "~/utils/types";
 
+import { formatProductPrice } from "~/utils/format-product-price";
+
 import { useShoppingCart } from "~/hooks/use-shopping-cart";
 
-import { IconButton } from "../icon-button";
 import { SpecialText } from "../special-text";
 import { ProductQuantityCounter } from "../product-quantity-counter";
 
@@ -25,7 +26,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   const handleShowProductInCart = () => {
-    dispatch({ type: "OPEN_MODAL" });
+    dispatch({ type: "SHOW_PRODUCT_IN_CARD", payload: { productId: product.id } });
   };
 
   return (
@@ -33,27 +34,34 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <div className="w-full h-full flex flex-col justify-between transition-all duration-150">
         <div
           className={clsx(
-            "flex justify-between items-center xl:group-hover:opacity-100 transition-all duration-150",
+            "flex flex-col-reverse md:flex-row justify-between gap-2 items-start xl:group-hover:opacity-100 transition-all duration-150",
             isProductInShoppingCart ? "opacity-100" : "xl:opacity-0"
           )}
         >
-          <h3 className="text-3xl font-medium uppercase">
-            <SpecialText>{product.name}</SpecialText>
-          </h3>
+          <div className="flex flex-col gap-2">
+            <p className="text-2xl font-medium uppercase">
+              <SpecialText>{product.name}</SpecialText>
+            </p>
+            <p className="hidden md:inline-block text-sm text-neutral-500">
+              {product.description}
+            </p>
+          </div>
 
           {isProductInShoppingCart && (
-            <IconButton
-              size="small"
-              icon={ArrowUpRight}
+            <button
+              className="text-xs text-neutral-400 hover:text-neutral-600 flex md:flex-row-reverse items-center gap-2 transition-colors duration-150"
               onClick={handleShowProductInCart}
-            />
+            >
+              <Eye width={12} />
+              <SpecialText>view in cart</SpecialText>
+            </button>
           )}
         </div>
 
         <div className="w-full flex justify-between items-center xl:opacity-0 xl:group-hover:opacity-100 transition-all duration-150">
-          <button>
-            <SpecialText>buy</SpecialText>
-          </button>
+          <span className="text-2xl text-neutral-500 font-medium">
+            {formatProductPrice({ price: product.price })}
+          </span>
 
           {isProductInShoppingCart ? (
             <ProductQuantityCounter product={product} />

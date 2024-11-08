@@ -8,13 +8,15 @@ export interface CartProduct extends Product {
 }
 
 interface ShoppingCartState {
-  modal: { isOpen: boolean };
+  modal: { isOpen: boolean; highlightedProduct: string | null };
   products: CartProduct[];
 }
 
 type ShoppingCartReducerAction =
   | { type: "OPEN_MODAL" }
   | { type: "CLOSE_MODAL" }
+  | { type: "SHOW_PRODUCT_IN_CARD"; payload: { productId: string } }
+  | { type: "REMOVE_HIGHLIGHTED_PRODUCT" }
   | { type: "INCREMENT_PRODUCT_QUANTITY"; payload: { productId: string } }
   | { type: "DECREASE_PRODUCT_QUANTITY"; payload: { productId: string } }
   | {
@@ -31,10 +33,23 @@ const shoppingCartReducer = (
 
   switch (action.type) {
     case "OPEN_MODAL": {
-      return { ...newState, modal: { isOpen: true } };
+      return { ...newState, modal: { ...newState.modal, isOpen: true } };
     }
     case "CLOSE_MODAL": {
-      return { ...newState, modal: { isOpen: false } };
+      return { ...newState, modal: { ...newState.modal, isOpen: false } };
+    }
+    case "SHOW_PRODUCT_IN_CARD": {
+      return {
+        ...newState,
+        modal: {
+          ...newState,
+          isOpen: true,
+          highlightedProduct: action.payload.productId,
+        },
+      };
+    }
+    case "REMOVE_HIGHLIGHTED_PRODUCT": {
+      return { ...newState, modal: { ...newState.modal, highlightedProduct: null } };
     }
     case "ADD_PRODUCT": {
       const products = newState.products;
@@ -80,8 +95,7 @@ const shoppingCartReducer = (
   }
 };
 
-interface ShoppingCartContext {
-  modal: { isOpen: boolean };
+interface ShoppingCartContext extends ShoppingCartState {
   products: CartProduct[];
   subtotal: number;
   dispatch: Dispatch<ShoppingCartReducerAction>;
@@ -99,7 +113,7 @@ interface ShoppingCartProviderProps {
 
 export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) => {
   const [state, dispatch] = useReducer(shoppingCartReducer, {
-    modal: { isOpen: false },
+    modal: { isOpen: false, highlightedProduct: null },
     products: [],
   });
 

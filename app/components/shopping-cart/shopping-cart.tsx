@@ -75,7 +75,7 @@ export const ShoppingCart = () => {
                   <IconButton icon={X} onClick={handleCloseModal} />
                 </div>
 
-                <ul className="flex-1 flex flex-col gap-8 p-6">
+                <ul className="flex-1 flex flex-col gap-8">
                   {products.map((product) => (
                     <ShoppingCartProductCard key={product.id} product={product} />
                   ))}
