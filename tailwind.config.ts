@@ -4,6 +4,9 @@ export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        "primary-backgrund": "#101010",
+      },
       fontFamily: {
         sans: [
           '"Manrope"',

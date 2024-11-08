@@ -42,10 +42,10 @@ export const ShoppingCartProductCard = ({ product }: ShoppingCartProductCardProp
     <li
       className={clsx(
         "flex gap-6 transition-all duration-200 ease-in p-6",
-        isHighlighted ? "bg-sky-50" : "bg-transparent"
+        isHighlighted ? "bg-neutral-700" : "bg-transparent"
       )}
     >
-      <div className="w-28 md:w-32 aspect-square bg-neutral-100" />
+      <div className="w-28 md:w-32 aspect-square bg-neutral-900" />
 
       <div className="flex-1 w-full flex flex-col justify-between">
         <div className="flex flex-col gap-2">

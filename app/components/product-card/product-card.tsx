@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import { Eye } from "react-feather";
+import { Eye, Plus } from "react-feather";
 
 import type { Product } from "~/utils/types";
 
@@ -30,7 +30,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="w-full group aspect-square bg-neutral-100 p-6 md:p-8 transition-all duration-150">
+    <div className="w-full group aspect-square bg-neutral-900 p-6 md:p-8 transition-all duration-150">
       <div className="w-full h-full flex flex-col justify-between transition-all duration-150">
         <div
           className={clsx(
@@ -49,7 +49,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
           {isProductInShoppingCart && (
             <button
-              className="text-xs text-neutral-400 hover:text-neutral-600 flex md:flex-row-reverse items-center gap-2 transition-colors duration-150"
+              className="text-xs text-neutral-400 hover:text-white flex md:flex-row-reverse items-center gap-2 transition-colors duration-150"
               onClick={handleShowProductInCart}
             >
               <Eye width={12} />
@@ -59,15 +59,19 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
         <div className="w-full flex justify-between items-center xl:opacity-0 xl:group-hover:opacity-100 transition-all duration-150">
-          <span className="text-2xl text-neutral-500 font-medium">
+          <span className="text-2xl text-neutral-400 font-medium">
             {formatProductPrice({ price: product.price })}
           </span>
 
           {isProductInShoppingCart ? (
             <ProductQuantityCounter product={product} />
           ) : (
-            <button onClick={handleAddProductToCart}>
+            <button
+              className="text-neutral-200 hover:text-white text-sm font-medium flex items-center gap-2"
+              onClick={handleAddProductToCart}
+            >
               <SpecialText>Add to Cart</SpecialText>
+              <Plus width={14} />
             </button>
           )}
         </div>

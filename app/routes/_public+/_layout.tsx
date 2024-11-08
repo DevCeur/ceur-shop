@@ -18,12 +18,12 @@ export default function PublicLayout() {
   return (
     <div className="w-full max-w-[1440px] min-h-[100svh] mx-auto flex flex-col">
       <div className="flex-1 flex flex-col">
-        <header className="sticky top-0 bg-white px-6 md:px-8 xl:px-0 my-4 py-4 md:py-8 flex justify-between items-center">
+        <header className="sticky top-0 bg-primary-backgrund px-6 md:px-8 xl:px-0 my-4 py-4 md:py-8 flex justify-between items-center">
           <div className="flex items-center gap-20">
             {!isInHome && (
               <button
                 onClick={() => navigate(-1)}
-                className="hidden md:flex text-sm text-gray-950 uppercase font-semibold items-center gap-2 hover:underline"
+                className="hidden md:flex text-sm uppercase font-semibold items-center gap-2 hover:underline"
               >
                 <ArrowLeft width={14} />
                 <SpecialText>Go back</SpecialText>
@@ -31,10 +31,7 @@ export default function PublicLayout() {
             )}
 
             {isInHome && (
-              <Link
-                to={ROUTE.HOME}
-                className="text-lg text-neutral-950 font-bold hidden md:inline-block"
-              >
+              <Link to={ROUTE.HOME} className="text-lg font-bold hidden md:inline-block">
                 <SpecialText>Ceur Shop</SpecialText>
               </Link>
             )}
@@ -66,7 +63,7 @@ export default function PublicLayout() {
       <footer className="w-full flex flex-col justify-between items-center gap-8 px-6 md:px-8 xl:px-0 py-8 md:py-10 lg:py-12">
         <div className="w-full flex justify-between items-center gap-6">
           <FooterLink href="https://www.ceur.dev">CEUR</FooterLink>
-          <p className="hidden md:inline-block text-[8px] text-right text-neutral-400">
+          <p className="hidden md:inline-block text-[8px] text-right text-neutral-700">
             <SpecialText>all rights reserved</SpecialText> ©{" "}
             <SpecialText>carlos umaña</SpecialText> - 2024
           </p>
@@ -74,7 +71,7 @@ export default function PublicLayout() {
           <FooterLink href="https://github.com/DevCeur/ceur-shop">GITHUB_REPO</FooterLink>
         </div>
 
-        <p className="md:hidden text-[8px] text-right text-neutral-400">
+        <p className="md:hidden text-[8px] text-right text-neutral-700">
           ALL_RIGHTS_RESERVED © CARLOS_UMAÑA - 2024
         </p>
       </footer>

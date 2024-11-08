@@ -56,7 +56,7 @@ export const ShoppingCart = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
             />
 
             <div className="fixed inset-0 flex w-screen justify-end">
@@ -65,7 +65,7 @@ export const ShoppingCart = () => {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
-                className="w-full max-w-screen-sm bg-white flex flex-col"
+                className="w-full max-w-screen-sm bg-primary-backgrund flex flex-col border-l border-neutral-800"
               >
                 <div className="w-full flex justify-between items-center p-6">
                   <DialogTitle className="text-lg font-semibold uppercase">
@@ -81,7 +81,7 @@ export const ShoppingCart = () => {
                   ))}
                 </ul>
 
-                <div className="w-full border-t border-t-neutral-200 p-6">
+                <div className="w-full border-t border-neutral-800 p-6">
                   <h3>checkout_information</h3>
                 </div>
               </DialogPanel>
