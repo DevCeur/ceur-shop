@@ -1,6 +1,8 @@
+import "~/styles/global.css";
+
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 
-import "~/styles/global.css";
+import { ShoppingCartProvider } from "./context/shopping-cart-context";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -21,5 +23,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <ShoppingCartProvider>
+      <Outlet />
+    </ShoppingCartProvider>
+  );
 }
