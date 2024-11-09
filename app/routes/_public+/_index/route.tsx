@@ -1,37 +1,36 @@
-import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { ROUTE } from "~/utils/enum";
 
-import type { LoaderFunction } from "@remix-run/node";
-import type { Product } from "~/utils/types";
+import { Navlink } from "~/components/navlink";
 
-import { contentful } from "~/lib/contentful.server";
-
-import { ProductCard } from "~/components/product-card";
-
-interface LoaderData {
-  products: Product[];
+interface HomeCategorySectionProps {
+  title: string;
 }
 
-export const loader: LoaderFunction = async () => {
-  const products = await contentful.getEntries({ content_type: "product" });
+const HomeCategorySection = ({ title }: HomeCategorySectionProps) => {
+  return (
+    <div className="w-full flex flex-col gap-4">
+      <div className="w-full aspect-square flex-1 bg-neutral-900 flex flex-col justify-between items-end p-6 lg:p-8">
+        <h2 className="w-full text-left text-2xl">{title}</h2>
 
-  const formattedProducts = products.items.map((product) => ({
-    id: product.sys.id,
-    ...product.fields,
-  }));
-
-  return json({ products: formattedProducts });
+        <Navlink to={ROUTE.HOME}>Comprar</Navlink>
+      </div>
+    </div>
+  );
 };
 
 export default function HomeRoute() {
-  const { products } = useLoaderData<LoaderData>();
-
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-start">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+    <div className="flex-1 w-full flex flex-col gap-8 md:gap-12 lg:gap-16">
+      <h1 className="text-4xl md:text-7xl lg:text-8xl font-medium">
+        Préndalo,
+        <br />
+        lento y contento...
+      </h1>
+
+      <div className="flex-1 grid grid-cols-1 gap-8 lg:grid-cols-3 justify-items-start">
+        <HomeCategorySection title="Parafernalia" />
+        <HomeCategorySection title="Bongs" />
+        <HomeCategorySection title="Encendedores" />
       </div>
     </div>
   );

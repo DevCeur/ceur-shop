@@ -9,10 +9,6 @@
   font-style: normal;
 }
 
-* {
-  @apply uppercase;
-}
-
 body {
   @apply bg-primary-backgrund text-white;
 }
