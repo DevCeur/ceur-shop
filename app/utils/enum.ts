@@ -7,6 +7,6 @@ export const ROUTE = {
 
 export const MAIN_NAV_LINKS = [
   { text: "Home", route: ROUTE.HOME },
-  { text: "About", route: ROUTE.ABOUT },
-  { text: "Shop All", route: ROUTE.SHOP_ALL },
+  { text: "Sobre Esto", route: ROUTE.ABOUT },
+  { text: "Shop", route: ROUTE.SHOP_ALL },
 ];

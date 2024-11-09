@@ -90,8 +90,8 @@ export const ShoppingCart = () => {
                 className="w-full max-w-screen-sm bg-primary-backgrund flex flex-col md:border-l border-neutral-800"
               >
                 <div className="w-full flex justify-between items-center  border-b border-neutral-800 p-6">
-                  <DialogTitle className="text-lg font-semibold uppercase">
-                    shopping_cart
+                  <DialogTitle className="text-lg font-medium">
+                    Cart [{totalProducts}]
                   </DialogTitle>
 
                   <IconButton icon={X} onClick={handleCloseModal} />
@@ -106,7 +106,7 @@ export const ShoppingCart = () => {
                       className="text-lg text-neutral-500 hover:text-white font-medium flex justify-center items-center gap-4 transition-colors duration-150"
                       onClick={handleCloseModal}
                     >
-                      <SpecialText>Add Products</SpecialText>
+                      <SpecialText>Agregar Productos</SpecialText>
                       <Plus width={16} />
                     </Link>
                   </div>

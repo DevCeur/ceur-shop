@@ -12,7 +12,9 @@ export const ShoppingCartProductsList = ({ products }: ShoppingCartProductsListP
   if (!hasProducts) {
     return (
       <div className="flex-1 flex flex-col justify-center items-center p-6">
-        <p className="text-center">Seems that you don&apos;t have any product added</p>
+        <p className="w-full max-w-xs text-xl text-center">
+          No has seleccionado nada para comprar, terrible.
+        </p>
       </div>
     );
   }

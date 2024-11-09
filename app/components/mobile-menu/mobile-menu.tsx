@@ -1,14 +1,41 @@
+import clsx from "clsx";
+
 import { useState } from "react";
 import { Menu, X } from "react-feather";
+import { Link, useLocation } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 
-import { ROUTE } from "~/utils/enum";
+import type { LinkProps } from "@remix-run/react";
 
-import { Navlink } from "../navlink";
+import { MAIN_NAV_LINKS } from "~/utils/enum";
+
 import { IconButton } from "../icon-button";
 import { FooterLink } from "../footer-link";
 import { SpecialText } from "../special-text";
+
+interface MobileMenuLinkProps extends LinkProps {
+  children: string;
+}
+
+const MobileMenuLink = ({ to, children, ...linkProps }: MobileMenuLinkProps) => {
+  const location = useLocation();
+
+  const isInRoute = location.pathname === to;
+
+  return (
+    <Link
+      to={to}
+      className={clsx(
+        "text-4xl font-medium transition-all duration-150",
+        isInRoute ? "text-white" : "text-neutral-500"
+      )}
+      {...linkProps}
+    >
+      <SpecialText>{children}</SpecialText>
+    </Link>
+  );
+};
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,15 +76,15 @@ export const MobileMenu = () => {
                 </div>
 
                 <div className="flex-1 flex flex-col justify-center items-center gap-12 p-8">
-                  <Navlink onClick={() => setIsOpen(false)} to={ROUTE.HOME}>
-                    HOME
-                  </Navlink>
-                  <Navlink onClick={() => setIsOpen(false)} to={ROUTE.WHATS_THIS}>
-                    <SpecialText>What&apos;s this</SpecialText>
-                  </Navlink>
-                  <Navlink onClick={() => setIsOpen(false)} to={ROUTE.HOW_TO_BUY}>
-                    <SpecialText>How to buy</SpecialText>
-                  </Navlink>
+                  {MAIN_NAV_LINKS.map(({ text, route }, index) => (
+                    <MobileMenuLink
+                      key={index}
+                      onClick={() => setIsOpen(false)}
+                      to={route}
+                    >
+                      {text}
+                    </MobileMenuLink>
+                  ))}
                 </div>
 
                 <div className="w-full flex justify-between items-center p-8">
