@@ -1,3 +1,11 @@
+import { json } from "@remix-run/node";
+
+import type { LoaderFunction } from "@remix-run/node";
+
+export const loader: LoaderFunction = () => {
+  return json({ products: [] });
+};
+
 export default function WhatsThisRoute() {
   return (
     <div>

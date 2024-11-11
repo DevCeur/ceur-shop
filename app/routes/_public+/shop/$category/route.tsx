@@ -35,7 +35,7 @@ export default function ShopCategoryRoute() {
   return (
     <div className="w-full">
       <div className="pb-12">
-        <h1 className="text-5xl md:text-6xl font-medium">{category.name}</h1>
+        <h1 className="text-4xl md:text-6xl font-medium">{category.name}</h1>
       </div>
 
       <ProductsList products={category.products} />

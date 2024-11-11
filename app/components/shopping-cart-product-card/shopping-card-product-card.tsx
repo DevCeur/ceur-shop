@@ -50,7 +50,7 @@ export const ShoppingCartProductCard = ({ product }: ShoppingCartProductCardProp
 
       <div className="flex-1 w-full flex flex-col justify-between">
         <div className="flex flex-col gap-2">
-          <p className="text-lg font-medium">{product.name}</p>
+          <p className="text-md md:text-lg font-medium">{product.name}</p>
 
           <span className="text-sm text-neutral-500">
             {formatProductPrice({ price: product.price })}
