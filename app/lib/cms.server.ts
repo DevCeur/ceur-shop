@@ -7,7 +7,7 @@ if (!CONTENTFUL_SPACE) throw new Error("Missing CONTENTFUL_SPACE env variable");
 if (!CONTENTFUL_ACCESS_TOKEN)
   throw new Error("Missing CONTENTFUL_ACCESS_TOKEN env variable");
 
-export const contentful = Contentful.createClient({
+export const cms = Contentful.createClient({
   space: CONTENTFUL_SPACE,
   accessToken: CONTENTFUL_ACCESS_TOKEN,
 });

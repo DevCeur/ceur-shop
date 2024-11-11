@@ -3,9 +3,10 @@ interface FormatProductPriceOptions {
 }
 
 export const formatProductPrice = ({ price }: FormatProductPriceOptions) => {
-  const priceFormatter = new Intl.NumberFormat("us-US", {
+  const priceFormatter = new Intl.NumberFormat("es-CO", {
     style: "currency",
-    currency: "USD",
+    currency: "COP",
+    minimumFractionDigits: 0,
   });
 
   const formattedPrice = priceFormatter.format(price);

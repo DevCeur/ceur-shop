@@ -1,6 +1,8 @@
+import { Link } from "@remix-run/react";
+
 import type { MetaFunction } from "@remix-run/node";
 
-import { Navlink } from "~/components/navlink";
+import { SpecialText } from "~/components/special-text";
 
 export const meta: MetaFunction = () => [{ title: "CEUR_SHOP ~ Selected Smoking Shop" }];
 
@@ -11,13 +13,19 @@ interface HomeCategorySectionProps {
 
 const HomeCategorySection = ({ title, category }: HomeCategorySectionProps) => {
   return (
-    <div className="w-full flex flex-col gap-4">
-      <div className="w-full aspect-square flex-1 bg-neutral-900 flex flex-col justify-between items-end p-6 lg:p-8">
-        <h2 className="w-full text-left text-2xl">{title}</h2>
+    <Link
+      to={`/shop/${category}`}
+      className="aspect-square md:aspect-auto w-full flex-1 bg-neutral-900 hover:bg-neutral-800 flex flex-col justify-between items-end p-6 lg:p-8 transition-colors duration-150"
+    >
+      <h2 className="w-full text-left text-2xl">{title}</h2>
 
-        <Navlink to={`/shop/${category}`}>Comprar</Navlink>
-      </div>
-    </div>
+      <span
+        aria-label={`Comprar ${category}`}
+        className="text-sm font-medium text-neutral-500 hover:text-white transition-colors duration-200"
+      >
+        <SpecialText>Comprar</SpecialText>
+      </span>
+    </Link>
   );
 };
 

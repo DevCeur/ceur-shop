@@ -116,9 +116,7 @@ export const ShoppingCart = () => {
                   <div className="w-full border-t border-neutral-800 p-6">
                     <div className="flex flex-col gap-6">
                       <div className="flex justify-between items-center">
-                        <p className="text-lg font-medium">
-                          <SpecialText>Checkout Info</SpecialText>
-                        </p>
+                        <p className="text-lg font-medium">Checkout Info</p>
 
                         <button
                           className="p-2"
@@ -132,21 +130,21 @@ export const ShoppingCart = () => {
                         </button>
                       </div>
 
-                      {checkoutInfoExpanded && (
-                        <div className={clsx("flex flex-col gap-2")}>
-                          <span className="text-lg text-neutral-400">
-                            <strong>Subtotal:</strong>
-                            <span className="inline-block ml-2">
-                              {formatProductPrice({ price: subtotal })}
-                            </span>
+                      <div className={clsx("flex flex-col gap-2")}>
+                        <span className="text-lg">
+                          <strong>Subtotal:</strong>
+                          <span className="inline-block ml-2">
+                            {formatProductPrice({ price: subtotal })}
                           </span>
+                        </span>
 
+                        {checkoutInfoExpanded && (
                           <span className="text-xs text-neutral-400">
                             <strong>Total Products:</strong>
                             <span className="inline-block ml-2">{totalProducts}</span>
                           </span>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
                       <div className="flex justify-between gap-8 pt-3">
                         <Button onClick={handleEmptyCart}>Empty</Button>

@@ -1,15 +1,16 @@
+import clsx from "clsx";
+
 import { Trash } from "react-feather";
+import { useEffect, useState } from "react";
+
+import type { CartProduct } from "~/context/shopping-cart-context";
 
 import { formatProductPrice } from "~/utils/format-product-price";
 
-import { CartProduct } from "~/context/shopping-cart-context";
+import { useShoppingCart } from "~/hooks/use-shopping-cart";
 
 import { IconButton } from "../icon-button";
-import { SpecialText } from "../special-text";
 import { ProductQuantityCounter } from "../product-quantity-counter";
-import { useShoppingCart } from "~/hooks/use-shopping-cart";
-import { useEffect, useState } from "react";
-import clsx from "clsx";
 
 interface ShoppingCartProductCardProps {
   product: CartProduct;
@@ -42,16 +43,14 @@ export const ShoppingCartProductCard = ({ product }: ShoppingCartProductCardProp
     <li
       className={clsx(
         "flex gap-6 transition-all duration-200 ease-in p-6",
-        isHighlighted ? "bg-neutral-700" : "bg-transparent"
+        isHighlighted ? "bg-neutral-800" : "bg-transparent"
       )}
     >
       <div className="w-28 md:w-32 aspect-square bg-neutral-900" />
 
       <div className="flex-1 w-full flex flex-col justify-between">
         <div className="flex flex-col gap-2">
-          <p className="text-lg font-medium">
-            <SpecialText>{product.name}</SpecialText>
-          </p>
+          <p className="text-lg font-medium">{product.name}</p>
 
           <span className="text-sm text-neutral-500">
             {formatProductPrice({ price: product.price })}
