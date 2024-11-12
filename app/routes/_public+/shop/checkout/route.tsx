@@ -59,7 +59,7 @@ const CheckoutResumeDropdown = () => {
       </button>
 
       {showOrderResume && (
-        <div className="border-b border-b-neutral-800 py-8">
+        <div className="border-b border-b-neutral-800 px-5 py-8">
           <CheckoutResume />
         </div>
       )}

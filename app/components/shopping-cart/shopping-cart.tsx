@@ -82,7 +82,7 @@ export const ShoppingCart = () => {
               className="fixed inset-0 bg-black/30 backdrop-blur-sm"
             />
 
-            <div className="fixed inset-0 flex w-screen justify-end">
+            <div className="fixed inset-0 flex w-screen h-[100svh] justify-end">
               <DialogPanel
                 as={motion.div}
                 initial={{ opacity: 0, x: 10 }}
@@ -90,7 +90,7 @@ export const ShoppingCart = () => {
                 exit={{ opacity: 0, x: 10 }}
                 className="w-full max-w-screen-sm bg-primary-backgrund flex flex-col md:border-l border-neutral-800"
               >
-                <div className="w-full flex justify-between items-center  border-b border-neutral-800 p-6">
+                <div className="w-full flex justify-between items-center border-b border-neutral-800 p-6">
                   <DialogTitle className="text-lg font-medium">
                     Cart [{totalProducts}]
                   </DialogTitle>
