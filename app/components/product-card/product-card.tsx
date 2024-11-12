@@ -31,8 +31,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="w-full aspect-square bg-neutral-900 p-6 md:p-8">
       <div className="w-full h-full flex flex-col justify-between">
-        <div className="flex justify-between items-start">
-          <div className="flex flex-col gap-2">
+        <div className="flex justify-between items-start gap-6">
+          <div className="w-full max-w-[275px] xl:max-w-full flex flex-col gap-3">
             <p className="text-2xl font-medium">{product.name}</p>
             <p className="text-sm text-neutral-500">{product.description}</p>
           </div>
