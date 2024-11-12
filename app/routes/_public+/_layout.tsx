@@ -18,9 +18,9 @@ export default function PublicLayout() {
   const handleGoBack = () => navigate(-1);
 
   return (
-    <div className="w-full min-h-[100svh] mx-auto flex flex-col relative overflow-hidden">
+    <div className="w-full min-h-[100svh] mx-auto flex flex-col">
       <div className="flex-1 flex flex-col">
-        <header className="sticky top-0 bg-primary-backgrund px-5 md:px-8 my-6 py-4 md:py-8 flex justify-between items-center">
+        <header className="sticky top-0 z-10 bg-primary-backgrund px-5 md:px-8 h-20 flex justify-between items-center">
           <div className="flex items-center gap-20">
             {!isInHome && (
               <button

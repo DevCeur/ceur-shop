@@ -17,6 +17,7 @@ import { useShoppingCart } from "~/hooks/use-shopping-cart";
 import { ROUTE } from "~/utils/enum";
 import { formatProductPrice } from "~/utils/format-product-price";
 
+import { Cta } from "../cta";
 import { Button } from "../button";
 import { IconButton } from "../icon-button";
 import { SpecialText } from "../special-text";
@@ -149,9 +150,14 @@ export const ShoppingCart = () => {
                       <div className="flex justify-between gap-8 pt-3">
                         <Button onClick={handleEmptyCart}>Empty</Button>
 
-                        <Button width="full" variant="primary">
+                        <Cta
+                          width="full"
+                          variant="primary"
+                          onClick={handleCloseModal}
+                          to={ROUTE.CHECKOUT}
+                        >
                           Checkout
-                        </Button>
+                        </Cta>
                       </div>
                     </div>
                   </div>

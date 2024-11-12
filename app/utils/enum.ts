@@ -1,8 +1,11 @@
 export const ROUTE = {
   HOME: "/",
   ABOUT: "/about",
+  SIGN_IN: "/sign-in",
+  SIGN_UP: "/sign-up",
   SHOP_ALL: "/shop",
-  CHECKOUT: "/checkout",
+  CHECKOUT: "/shop/checkout",
+  ORDER_CONFIRMATION: "/shop/order-confirmation",
 };
 
 export const MAIN_NAV_LINKS = [
