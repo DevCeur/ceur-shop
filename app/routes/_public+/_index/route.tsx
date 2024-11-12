@@ -32,7 +32,7 @@ const HomeCategorySection = ({ title, category }: HomeCategorySectionProps) => {
 export default function HomeRoute() {
   return (
     <div className="flex-1 w-full flex flex-col gap-8 md:gap-12 lg:gap-16">
-      <h1 className="text-6xl md:text-7xl lg:text-8xl font-medium py-10 lg:py-0">
+      <h1 className="text-6xl lg:text-7xl font-medium py-10 lg:py-0">
         Préndalo,
         <br />
         lento y contento...
