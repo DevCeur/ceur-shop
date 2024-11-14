@@ -17,6 +17,7 @@ import { useShoppingCart } from "~/hooks/use-shopping-cart";
 import { ROUTE } from "~/utils/enum";
 import { formatProductPrice } from "~/utils/format-product-price";
 
+import { Cta } from "../cta";
 import { Button } from "../button";
 import { IconButton } from "../icon-button";
 import { SpecialText } from "../special-text";
@@ -78,10 +79,10 @@ export const ShoppingCart = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
+              className="fixed inset-0 w-screen h-[100dvh] bg-black/30 backdrop-blur-sm"
             />
 
-            <div className="fixed inset-0 flex w-screen justify-end">
+            <div className="fixed inset-0 flex w-screen h-[100dvh] justify-end">
               <DialogPanel
                 as={motion.div}
                 initial={{ opacity: 0, x: 10 }}
@@ -89,7 +90,7 @@ export const ShoppingCart = () => {
                 exit={{ opacity: 0, x: 10 }}
                 className="w-full max-w-screen-sm bg-primary-backgrund flex flex-col md:border-l border-neutral-800"
               >
-                <div className="w-full flex justify-between items-center  border-b border-neutral-800 p-6">
+                <div className="w-full flex justify-between items-center border-b border-neutral-800 p-6">
                   <DialogTitle className="text-lg font-medium">
                     Cart [{totalProducts}]
                   </DialogTitle>
@@ -149,9 +150,14 @@ export const ShoppingCart = () => {
                       <div className="flex justify-between gap-8 pt-3">
                         <Button onClick={handleEmptyCart}>Empty</Button>
 
-                        <Button width="full" variant="primary">
+                        <Cta
+                          width="full"
+                          variant="primary"
+                          onClick={handleCloseModal}
+                          to={ROUTE.CHECKOUT}
+                        >
                           Checkout
-                        </Button>
+                        </Cta>
                       </div>
                     </div>
                   </div>

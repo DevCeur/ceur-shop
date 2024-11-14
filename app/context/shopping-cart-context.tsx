@@ -15,7 +15,7 @@ interface ShoppingCartState {
 type ShoppingCartReducerAction =
   | { type: "OPEN_MODAL" }
   | { type: "CLOSE_MODAL" }
-  | { type: "INITIALIZE"; payload: { initialState: ShoppingCartState } }
+  | { type: "INITIALIZE"; payload: { products: CartProduct[] } }
   | { type: "SHOW_PRODUCT_IN_CARD"; payload: { productId: string } }
   | { type: "REMOVE_HIGHLIGHTED_PRODUCT" }
   | { type: "INCREMENT_PRODUCT_QUANTITY"; payload: { productId: string } }
@@ -41,7 +41,7 @@ const shoppingCartReducer = (
       return { ...newState, modal: { ...newState.modal, isOpen: false } };
     }
     case "INITIALIZE": {
-      return { ...newState, ...action.payload.initialState };
+      return { ...newState, products: action.payload.products };
     }
     case "SHOW_PRODUCT_IN_CARD": {
       return {
@@ -68,7 +68,7 @@ const shoppingCartReducer = (
         products: updatedProducts,
       };
 
-      localStorage.setItem("cart", JSON.stringify(updatedState));
+      localStorage.setItem("cart_products", JSON.stringify(updatedProducts));
 
       return updatedState;
     }
@@ -81,7 +81,7 @@ const shoppingCartReducer = (
 
       const updatedState = { ...newState, products: updatedProducts };
 
-      localStorage.setItem("cart", JSON.stringify(updatedState));
+      localStorage.setItem("cart_products", JSON.stringify(updatedProducts));
 
       return updatedState;
     }
@@ -99,7 +99,7 @@ const shoppingCartReducer = (
 
       const updatedState = { ...newState, products: updatedProducts };
 
-      localStorage.setItem("cart", JSON.stringify(updatedState));
+      localStorage.setItem("cart_products", JSON.stringify(updatedProducts));
 
       return updatedState;
     }
@@ -112,7 +112,7 @@ const shoppingCartReducer = (
 
       const updatedState = { ...newState, products: updatedProducts };
 
-      localStorage.setItem("cart", JSON.stringify(updatedState));
+      localStorage.setItem("cart_products", JSON.stringify(updatedProducts));
 
       return updatedState;
     }
@@ -123,7 +123,7 @@ const shoppingCartReducer = (
         modal: { ...newState.modal, isOpen: false },
       };
 
-      localStorage.setItem("cart", JSON.stringify(updatedState));
+      localStorage.setItem("cart_products", JSON.stringify([]));
 
       return updatedState;
     }
@@ -189,13 +189,11 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
   };
 
   useEffect(() => {
-    const cartState = JSON.parse(
-      localStorage.getItem("cart") as string
-    ) as ShoppingCartState;
+    const cartProducts = JSON.parse(localStorage.getItem("cart_products") as string);
 
     dispatch({
       type: "INITIALIZE",
-      payload: { initialState: cartState || initialState },
+      payload: { products: cartProducts || [] },
     });
   }, []);
 

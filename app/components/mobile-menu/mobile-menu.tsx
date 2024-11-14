@@ -56,10 +56,10 @@ export const MobileMenu = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30 h-[100svh]"
+              className="fixed inset-0 bg-black/30 h-[100dvh]"
             />
 
-            <div className="fixed inset-0 flex w-screen justify-start h-[100svh]">
+            <div className="fixed inset-0 flex w-screen h-[100dvh] justify-start">
               <DialogPanel
                 as={motion.div}
                 initial={{ opacity: 0, x: -10 }}
